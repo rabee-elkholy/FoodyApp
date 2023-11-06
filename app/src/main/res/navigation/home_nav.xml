@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav"
+    app:startDestination="@id/recipesFragment">
+
+    <fragment
+        android:id="@+id/recipesFragment"
+        android:name="com.androdu.foody.ui.fragments.recipes.RecipesFragment"
+        android:label="@string/recipes"
+        tools:layout="@layout/fragment_recipes">
+        <action
+            android:id="@+id/action_recipesFragment_to_bottomSheetFragment"
+            app:destination="@id/bottomSheetFragment" />
+        <argument
+            android:name="backFromBottomSheet"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <action
+            android:id="@+id/action_recipesFragment_to_detailsActivity"
+            app:destination="@id/detailsActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/favRecipesFragment"
+        android:name="com.androdu.foody.ui.fragments.favorites.FavRecipesFragment"
+        android:label="@string/fav_recipes"
+        tools:layout="@layout/fragment_fav_recipes" />
+    <fragment
+        android:id="@+id/foodJokeFragment"
+        android:name="com.androdu.foody.ui.fragments.foodJoke.FoodJokeFragment"
+        android:label="@string/food_joke"
+        tools:layout="@layout/fragment_food_joke" />
+    <dialog
+        android:id="@+id/bottomSheetFragment"
+        android:name="com.androdu.foody.ui.fragments.recipes.bottomSheet.BottomSheetFragment"
+        android:label="recipes_bottom_sheet"
+        tools:layout="@layout/recipes_bottom_sheet">
+        <action
+            android:id="@+id/action_bottomSheetFragment_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
+    </dialog>
+    <activity
+        android:id="@+id/detailsActivity"
+        android:name="com.androdu.foody.ui.activities.DetailsActivity"
+        android:label="@string/details"
+        tools:layout="@layout/activity_details">
+        <argument
+            android:name="recipeDetails"
+            app:argType="com.androdu.foody.models.Recipe" />
+    </activity>
+</navigation>
